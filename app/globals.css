@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+/* ── HUSTLY Design System — premium edtech, mobile-first ──
+   Paleta V1: roxo vibrante + lima neon + off-white. Cores em HSL.
+   Mantém a11y/reduced-motion da V2.
+*/
+
+:root {
+  /* Hustly brand (V1) */
+  --hustly-purple: 265 90% 58%;
+  --hustly-purple-deep: 262 80% 18%;
+  --hustly-purple-ink: 260 60% 10%;
+  --hustly-lime: 75 95% 60%;
+  --hustly-lime-soft: 75 90% 75%;
+  --hustly-cream: 48 33% 96%;
+
+  /* Base — clean off-white */
+  --background: 48 33% 98%;
+  --foreground: 260 40% 8%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 260 40% 8%;
+
+  --primary: 265 90% 58%;
+  --primary-foreground: 48 33% 98%;
+
+  --secondary: 75 95% 60%;
+  --secondary-foreground: 260 60% 10%;
+
+  --muted: 260 20% 95%;
+  --muted-foreground: 260 15% 40%;
+
+  --accent: 75 95% 60%;
+  --accent-foreground: 260 60% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 260 20% 90%;
+  --input: 260 20% 90%;
+  --ring: 265 90% 58%;
+
+  --radius: 1.25rem;
+
+  /* Gradients */
+  --gradient-hero: radial-gradient(ellipse at top, hsl(265 90% 65% / 0.25), transparent 60%),
+                   linear-gradient(180deg, hsl(48 33% 98%), hsl(260 30% 96%));
+  --gradient-purple: linear-gradient(135deg, hsl(265 90% 58%), hsl(280 85% 50%));
+  --gradient-lime: linear-gradient(135deg, hsl(75 95% 60%), hsl(85 90% 55%));
+  --gradient-dark: linear-gradient(160deg, hsl(262 80% 14%), hsl(265 70% 8%));
+  --gradient-aura: conic-gradient(from 180deg at 50% 50%, hsl(265 90% 58%), hsl(75 95% 60%), hsl(265 90% 58%));
+
+  /* Glow shadows */
+  --glow-purple: 0 0 60px hsl(265 90% 58% / 0.45);
+  --glow-lime: 0 0 50px hsl(75 95% 60% / 0.55);
+  --shadow-card: 0 10px 40px -10px hsl(265 60% 30% / 0.18);
+  --shadow-soft: 0 4px 20px -6px hsl(260 40% 20% / 0.12);
+
+  /* V2 compat tokens (mapeados para a paleta V1) */
+  --lp-bg: hsl(260 60% 10%);
+  --lp-bg-elev: hsl(262 60% 14%);
+  --lp-cream: hsl(48 33% 96%);
+  --lp-text: hsl(48 33% 98%);
+  --lp-text-dark: hsl(260 40% 8%);
+  --lp-muted: hsl(260 15% 65%);
+  --lp-accent: hsl(75 95% 60%);
+  --lp-accent-hover: hsl(75 90% 55%);
+  --lp-cta: hsl(265 90% 58%);
+  --lp-cta-hover: hsl(265 90% 50%);
+  --lp-gold: hsl(35 35% 55%);
+  --lp-border: hsl(0 0% 100% / 0.08);
+  --lp-muted-dark: hsl(260 15% 40%);
+}
+
+@theme {
+  --color-hustly-purple: hsl(var(--hustly-purple));
+  --color-hustly-purple-deep: hsl(var(--hustly-purple-deep));
+  --color-hustly-purple-ink: hsl(var(--hustly-purple-ink));
+  --color-hustly-lime: hsl(var(--hustly-lime));
+  --color-hustly-lime-soft: hsl(var(--hustly-lime-soft));
+  --color-hustly-cream: hsl(var(--hustly-cream));
+
+  --color-lp-bg: var(--lp-bg);
+  --color-lp-bg-elev: var(--lp-bg-elev);
+  --color-lp-cream: var(--lp-cream);
+  --color-lp-text: var(--lp-text);
+  --color-lp-text-dark: var(--lp-text-dark);
+  --color-lp-muted: var(--lp-muted);
+  --color-lp-accent: var(--lp-accent);
+  --color-lp-accent-hover: var(--lp-accent-hover);
+  --color-lp-cta: var(--lp-cta);
+  --color-lp-cta-hover: var(--lp-cta-hover);
+  --color-lp-gold: var(--lp-gold);
+  --color-lp-border: var(--lp-border);
+  --color-lp-muted-dark: var(--lp-muted-dark);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-border: hsl(var(--border));
+
+  --font-manrope: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: "Libre Baskerville", Georgia, serif;
+  --font-display: "Space Grotesk", "Manrope", sans-serif;
+}
+
+/* Focus visível — 2px outline lime (a11y) */
+:where(a, button, [role="button"], input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid hsl(var(--hustly-lime));
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* prefers-reduced-motion — desliga transforms/animações decorativas */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-manrope);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* ── V1 Visual utilities ── */
+.bg-gradient-hero { background: var(--gradient-hero); }
+.bg-gradient-purple { background: var(--gradient-purple); }
+.bg-gradient-lime { background: var(--gradient-lime); }
+.bg-gradient-dark { background: var(--gradient-dark); }
+.bg-gradient-aura { background: var(--gradient-aura); }
+
+.glow-purple { box-shadow: var(--glow-purple); }
+.glow-lime { box-shadow: var(--glow-lime); }
+.shadow-card { box-shadow: var(--shadow-card); }
+.shadow-soft { box-shadow: var(--shadow-soft); }
+
+.text-gradient-purple {
+  background: var(--gradient-purple);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-lime {
+  background: linear-gradient(135deg, hsl(75 95% 50%), hsl(85 90% 45%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: hsl(0 0% 100% / 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(0 0% 100% / 0.6);
+}
+.glass-dark {
+  background: hsl(262 60% 10% / 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(265 50% 30% / 0.4);
+}
+
+.grain::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(hsl(0 0% 100% / 0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+.surface-dark {
+  background: var(--gradient-dark);
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  box-shadow: var(--shadow-card);
+}
+.surface-glass-dark {
+  background: hsl(0 0% 100% / 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid hsl(0 0% 100% / 0.1);
+}
+
+/* ── V1 Animations ── */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-18px) rotate(-2deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px hsl(75 95% 60% / 0.4); }
+  50% { box-shadow: 0 0 60px hsl(75 95% 60% / 0.8); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-slower { animation: float-slower 8s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 18s linear infinite; }
+
+/* ── V2 utility classes (compat) ── */
+.lp-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.lp-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 1.2rem + 2.6vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.lp-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 1.5rem + 5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.lp-number {
+  font-family: var(--font-manrope);
+  font-weight: 800;
+  font-size: clamp(3rem, 2rem + 8vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.lp-quote {
+  font-family: var(--font-editorial);
+  font-style: italic;
+}
+.lp-cta-btn {
+  background-color: hsl(var(--hustly-purple));
+  color: hsl(48 33% 98%);
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.lp-cta-btn:hover {
+  background-color: hsl(265 90% 50%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px hsl(265 90% 58% / 0.55);
+}
