@@ -46,6 +46,13 @@ export const metadata: Metadata = {
     description:
       "Hustly é a plataforma com IA que entende, organiza e acelera sua vida acadêmica. Exclusiva para alunos Ânima.",
   },
+  icons: [
+    {
+      rel: "icon",
+      url: "/favicon.png",
+      type: "image/png",
+    },
+  ],
 };
 
 export default function RootLayout({
