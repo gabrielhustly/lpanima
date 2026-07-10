@@ -27,7 +27,7 @@ export function Header() {
           </nav>
 
           <a
-            href="https://www.hustly.me"
+            href="https://hustly.me/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Login Universidade, entrar na plataforma Hustly"
