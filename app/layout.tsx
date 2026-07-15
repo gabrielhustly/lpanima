@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Libre_Baskerville, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { PageTracker } from "@/components/site/page-tracker";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -60,7 +61,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${manrope.variable} ${libreBaskerville.variable} ${spaceGrotesk.variable}`}>
-      <body>{children}</body>
+      <body>
+        <PageTracker />
+        {children}
+      </body>
     </html>
   );
 }

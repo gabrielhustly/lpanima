@@ -92,7 +92,7 @@ export function Hero() {
             transition={{ ...springs.gentle, duration: 0.5, delay: 0.18 }}
           >
             <a
-              href="https://hustly.me/"
+              href="https://alunos.hustly.app.br/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Entrar agora na plataforma HUSTLY"
