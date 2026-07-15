@@ -27,7 +27,7 @@ export function Header() {
           </nav>
 
           <a
-            href="https://alunos.hustly.app.br/"
+            href="https://hustly.app.br/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Login Universidade, entrar na plataforma Hustly"

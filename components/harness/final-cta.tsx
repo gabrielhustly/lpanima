@@ -121,7 +121,7 @@ export function FinalCTA({ startDate }: FinalCTAProps) {
           transition={{ ...springs.gentle, duration: 0.5, delay: 0.2 }}
         >
           <motion.a
-            href="https://alunos.hustly.app.br/"
+            href="https://hustly.app.br/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Entrar agora na plataforma HUSTLY"

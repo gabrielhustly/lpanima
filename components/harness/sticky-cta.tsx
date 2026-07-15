@@ -67,7 +67,7 @@ export function StickyCTA() {
             style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
           >
             <a
-              href="https://alunos.hustly.app.br/"
+              href="https://hustly.app.br/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Entrar na plataforma"
@@ -88,7 +88,7 @@ export function StickyCTA() {
             className="fixed bottom-6 right-6 z-40 hidden md:block"
           >
             <a
-              href="https://alunos.hustly.app.br/"
+              href="https://hustly.app.br/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Entrar na plataforma"
