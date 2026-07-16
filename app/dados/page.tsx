@@ -8,17 +8,36 @@ type DayStat = {
   visitors: number;
 };
 
+type EventStat = {
+  name: string;
+  total: number;
+  today: number;
+};
+
 type Stats = {
   totalPageviews: number;
   totalVisitors: number;
   todayPageviews: number;
   todayVisitors: number;
   days: DayStat[];
+  events: EventStat[];
   persistent: boolean;
   updatedAt: string;
 };
 
 const REFRESH_MS = 5000;
+
+const EVENT_LABELS: Record<string, string> = {
+  cta_hero_click: "CTA Hero (topo)",
+  cta_final_click: "CTA Final",
+  cta_header_click: "CTA Cabeçalho",
+  cta_sticky_click: "CTA Fixo (flutuante)",
+  feature_click: "Clique em card de recurso",
+};
+
+function eventLabel(name: string): string {
+  return EVENT_LABELS[name] ?? name;
+}
 
 function formatNumber(n: number): string {
   return new Intl.NumberFormat("pt-BR").format(n);
@@ -79,6 +98,7 @@ export default function DadosPage() {
   }, [load]);
 
   const maxPv = Math.max(1, ...(stats?.days.map((d) => d.pageviews) ?? [1]));
+  const clickEvents = (stats?.events ?? []).filter((e) => e.name.includes("click"));
 
   return (
     <main className="min-h-screen bg-lp-bg px-5 py-10 text-lp-text sm:px-8 sm:py-14">
@@ -155,6 +175,38 @@ export default function DadosPage() {
                   </li>
                 ))}
               </ul>
+            </section>
+
+            <section className="mt-8 rounded-2xl border border-lp-border bg-lp-bg-elev p-5 sm:p-6">
+              <h2 className="mb-5 font-display text-lg font-semibold text-lp-text">
+                Cliques nos botões (CTAs)
+              </h2>
+              {clickEvents.length === 0 ? (
+                <p className="text-sm text-lp-muted">
+                  Nenhum clique registrado ainda.
+                </p>
+              ) : (
+                <ul className="space-y-3">
+                  {clickEvents.map((ev) => (
+                    <li
+                      key={ev.name}
+                      className="flex items-center justify-between gap-3 border-b border-lp-border pb-3 last:border-0 last:pb-0"
+                    >
+                      <span className="text-sm text-lp-text">
+                        {eventLabel(ev.name)}
+                      </span>
+                      <span className="flex items-baseline gap-3">
+                        <span className="font-display text-xl font-bold tabular-nums text-hustly-lime">
+                          {formatNumber(ev.total)}
+                        </span>
+                        <span className="w-20 text-right text-xs text-lp-muted">
+                          {formatNumber(ev.today)} hoje
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </section>
 
             {!stats.persistent && (
